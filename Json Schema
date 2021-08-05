@@ -1,0 +1,487 @@
+{
+  "title": "JOB FILE MANAGER 1.0",
+  "type": "object",
+  "format": "categories",
+      "basicCategoryTitle": "Main",
+    "properties": {
+    "main_page": {
+      "type": "object",
+      "title": "MAIN MENU",
+      "options": {
+        "compact": true
+      },
+      "properties": {
+        
+        
+            "left": {
+      "type": "object",
+      "title": "Left Column",
+      "format": "grid",
+      "options": {
+        "grid_columns": 6,
+        "compact": true
+      },
+      "properties": {
+        
+        "customer": {
+          "title":"Customer",
+          "type": "string",
+        "options": {
+        "grid_columns": 12,
+        "compact": false
+      }
+          
+          
+        },
+        "ordern": {
+          "title":"Order No.",
+          "type": "string",
+           "options": {
+        "grid_columns": 12,
+        "compact": false}
+        },
+        "file_name": {
+          "title":"File Name",
+          "type": "string",
+           "options": {
+        "grid_columns": 12,
+        "compact": false}
+        },
+
+
+
+            "units": {
+                "title": "UNITS",
+                "type": "string",
+                "format": "radio",
+                "enum": [
+                  "mm",
+                  "In"
+                ],
+                "options": {
+                  "grid_columns": 2,
+                  "layout": "horizontal"
+                }
+              },
+
+
+        "generate": {
+          "title": "GENERATE JOBFILE",
+          "type": "button",
+          "inputAttributes": {
+          "class": "btn btn-secondary"
+        }
+          
+        },
+        
+        "save": {
+          "title": "SAVE PROJECT",
+          "type": "button",
+          "inputAttributes": {
+          "class": "btn btn-secondary"
+        }
+          
+        }
+                
+      }
+    },
+    "right": {
+      "type": "object",
+      "title": "Right Column",
+      "format": "grid",
+      "options": {
+        "grid_columns": 6,
+        "grid_break": true,
+        "compact": true
+      },
+      "properties": {
+        "text": {
+          "title": "Frame drawing",
+          "type": "info",
+        "options": {
+        "compact": true
+      },
+        
+           "description": "<img src='https://i.ibb.co/1TH7Lvp/15-OPEN-IN-OPEN-TOP-Fto-M-Fto-M.png' height='300' />"
+           
+        }
+      }
+    },
+   
+   
+    "production": {
+          "type": "array",
+          "title": "ORDER",
+          "format": "tabs",
+          "uniqueItems": true,
+          "options": {
+            "compact": false,
+            "enable_array_copy": true
+          },
+          "items": {
+            "title": " ",
+            "format": "grid-strict",
+            "required": [],
+            "uniqueItems": true,
+            "headerTemplate": "{{i1}} -  {{self.Piece_name}}",
+            
+            "properties": {
+              "Piece_name": {
+                "title": "FAMILY",
+                "uniqueItems": true,
+                "type": "string",
+                "options": {
+                  "grid_columns": 4
+                  
+                }
+              },
+              "Profile_name": {
+                "title": "Model",
+                "type": "string",
+                "options": {
+                  "grid_columns": 4,
+                  "grid_break": true,
+                  "enable_array_copy": false
+                }
+              },
+              
+               "order": {
+                "type": "array",
+                "title": "Dimentions",
+                "format": "table",
+                "options": {
+                  "grid_columns": 12,
+                  "disable_collapse": false,
+                  "disable_array_reorder": true,
+                  "enable_array_copy": true,
+                  "compact": false,
+                  "expand_height": false,
+                  "remove_empty_properties": false,
+                  "infoText": "Details"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+
+                    "L": {
+                      "title": "L",
+                      "type": "string"
+                    },
+                    "W": {
+                      "title": "W",
+                      "type": "string"
+                    },
+                    "h": {
+                      "title": "h",
+                      "type": "string"
+                    },
+                    "w1": {
+                      "title": "w1",
+                      "type": "string"
+                    }
+                    
+                    
+                    
+                  }
+                }
+              }
+        
+        
+        
+        
+            }
+            
+      }}
+    }},
+    
+        "profile_details": {
+          "type": "array",
+          "title": "PIECES DEFINITON",
+          "format": "tabs",
+          "uniqueItems": true,
+          "options": {
+            "compact": false,
+            "enable_array_copy": true
+          },
+          "items": {
+            "title": " ",
+            "required": [],
+            "uniqueItems": true,
+            "headerTemplate": "{{i1}} -  {{self.Piece_name}}",
+            "properties": {
+              "Piece_name": {
+                "title": "PIECE NAME",
+                "uniqueItems": true,
+                "type": "string",
+                "options": {
+                  "grid_columns": 4
+                  
+                }
+              },
+              "Profile_name": {
+                "title": "PROFILE NAME",
+                "type": "string",
+                "options": {
+                  "grid_columns": 4
+                }
+              },
+              "Profile_code": {
+                "title": "PROFILE CODE",
+                "type": "string",
+                "options": {
+                  "grid_columns": 4,
+                  "grid_break": true
+                }
+              },
+              "CnType": {
+                "title": "CNC DEFINITION TYPE ",
+                "type": "string",
+                "format": "radio",
+                "enum": [
+                  "Fabrication",
+                  "CnCode"
+                ],
+                "options": {
+                  "grid_columns": 2,
+                  "layout": "horizontal"
+                }
+              },
+              "Fabrication_code": {
+                "title": "FABRICATION NAME",
+                "type": "string",
+                "options": {
+                  "grid_columns": 4,
+                  "grid_break": true
+                }
+              },
+              "cnc": {
+                "type": "array",
+                "title": "CNCode",
+                "format": "table",
+                "required": "CnCode",
+                "options": {
+                  "grid_columns": 12,
+                  "disable_collapse": false,
+                  "disable_array_reorder": true,
+                  "enable_array_copy": true,
+                  "compact": false,
+                  "expand_height": true,
+                  "remove_empty_properties": false,
+                  "infoText": "Details"
+                },
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Enable": {
+                      "title": "Enable",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "CnCode": {
+                      "title": "CnCode",
+                      "type": "string",
+                      "options": {
+                        "cleave": {
+                          "numericOnly": true,
+                          "delimiters": [" "],
+                          "blocks": [2,4]
+                        }
+                      }
+                    },
+                    "Position": {
+                      "title": "Machining position",
+                      "type": "string"
+                    },
+                    "Min_Long": {
+                      "type": "number",
+                      "title": "Min Long",
+                      "format": "number",
+                      "minimum": 0,
+                      "maximum": "6000"
+                    },
+                    "Max_Long": {
+                      "type": "number",
+                      "title": "Max Long",
+                      "format": "number",
+                      "minimum": 0,
+                      "maximum": 6000,
+                      "default": 6000,
+                      "watch": {
+                        "lmin": "Min_Long"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      
+    ,
+    "frames_tab": {
+  "type": "array",
+  "title": "MODEL DEFINITION",
+  "format": "tabs-top",
+  "options": {
+    "enable_array_copy": true
+  },
+  "items": {
+    "headerTemplate": "{{i1}} -  {{self.model_family}}",
+    "title": " ",
+    "format": "grid-strict",
+    "properties": {
+      "model_family": {
+        "type": "string",
+        "title": "MODEL FAMILY",
+        "options": {
+          "grid_columns": 3
+        }
+      },
+      "models": {
+        "type": "array",
+        "title": "Models",
+        "format": "tabs",
+        "items": {
+          "title": " ",
+          "headerTemplate": "{{i1}} -  {{self.model_name}}",
+          "format": "grid-strict",
+          "properties": {
+            
+            
+            "model_name": {
+              "type": "string",
+              "title": "Model name",
+              "options": {
+                "grid_columns": 3,
+                "grid_break": false,
+                 "inputAttributes": {
+          "placeholder":  "your name here...",
+          "class": "myclass"
+        }
+              }
+            },
+            
+            "dimentions": {
+      "type": "array",
+      "title": "Dimentions",
+      "uniqueItems": true,
+      "format": "choices",
+      "minItems": 1,
+      "options": {
+        "grid_columns": 4
+      },
+      "items": {
+        "type": "string",
+        "enum": [
+          "L",
+          "W",
+          "h",
+          "L1",
+          "L2",
+          "L3",
+          "L4",
+          "L5",
+          "W1",
+          "W2",
+          "W3",
+          "W4",
+          "W5"
+        ]
+      },
+      "default": [
+        "L"
+        
+      ]
+    },
+            
+            
+            
+            "pic": {
+              "type": "string",
+              "title": "Picture",
+              "media": {
+              "binaryEncoding": "base64",
+              "type": "img/png"
+            },
+            "options": {
+              "height": "100px",
+              "grid_columns": 4,
+              "multiple": false,
+                "grid_break": true
+                
+            }
+              
+            },
+            
+            "frame_size": {
+              "type": "string",
+              "title": "Model Size",
+              "options": {
+                "grid_columns": 3,
+                "grid_break": true,
+                 "inputAttributes": {
+          "placeholder":  "your name here..."
+        }
+              }
+            },
+            
+            "frame_brakedown": {
+              "type": "array",
+              "title": "Frame Breakdown",
+              "format": "table",
+              
+              
+              "options": {
+                  "grid_columns": 12,
+                  "disable_collapse": false,
+                  "disable_array_reorder": true,
+                  "enable_array_copy": true,
+                  "compact": false,
+                  "expand_height": true,
+                  "remove_empty_properties": false,
+                  "infoText": "Details"
+                },
+              
+              "items": {
+                "format": "grid-strict",
+                "properties": {
+                  "piece": {
+                    "type": "string",
+                    "title": "Piece",
+                    "enum": ["sill", "header", "jamb"],
+                    "options": {
+                      "grid_columns": 3,
+                      "grid_break": true
+                    }
+                  },
+                  "length": {
+                    "type": "string",
+                    "title": "Piece Length",
+                    "options": {
+                      "grid_columns": 3
+                    }
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "default": 1,
+                    "title": "Quantity",
+                    "options": {
+                      "grid_columns": 3
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+    
+    
+    
+    
+  }
+}
